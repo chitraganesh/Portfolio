@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chitra Ganesh · AIML Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+:root{color-scheme:dark;--bg:#0a0a0a;--surface:#141414;--text:#f5f5f5;--muted:#8a8a8a;--stroke:#202020;--g:linear-gradient(90deg,#7fd8c4,#6c8cff);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:90px;background:var(--bg)}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;overflow-x:hidden}
+.d{font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-.03em}
+.eye{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+section{padding:clamp(56px,9vw,110px) 0}
+h2{font-size:clamp(36px,6vw,64px);line-height:1;margin:14px 0 12px;font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-.02em}
+h2 i{font-style:normal;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);max-width:520px;font-size:15px;line-height:1.6}
+.hd{margin-bottom:40px}
+.eye:before{content:"";display:inline-block;width:32px;height:1px;background:var(--stroke);vertical-align:middle;margin-right:12px}
+/* loader */
+#load{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center}
+#load .tl{position:absolute;top:28px;left:28px}
+#load .w{font-size:clamp(40px,8vw,84px);color:rgba(245,245,245,.8)}
+#load .n{position:absolute;right:28px;bottom:36px;font-size:clamp(64px,11vw,140px);font-family:'Space Grotesk',sans-serif;font-weight:600;font-variant-numeric:tabular-nums}
+#bar{position:absolute;left:0;bottom:0;height:3px;width:100%;background:rgba(32,32,32,.6)}
+#bar i{display:block;height:100%;background:var(--g);transform-origin:left;transform:scaleX(0);box-shadow:0 0 8px rgba(108,140,255,.4)}
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:center;padding:calc(14px + env(safe-area-inset-top,0px)) 16px 0}
+.pill{display:inline-flex;align-items:center;gap:2px;border-radius:99px;border:1px solid rgba(255,255,255,.1);background:rgba(20,20,20,.7);backdrop-filter:blur(12px);padding:8px;transition:box-shadow .3s}
+.pill.s{box-shadow:0 6px 20px rgba(0,0,0,.4)}
+.logo{width:36px;height:36px;border-radius:50%;background:var(--g);padding:2px;transition:transform .3s}
+.logo:hover{transform:scale(1.1)}
+.logo span{display:flex;width:100%;height:100%;border-radius:50%;background:var(--bg);align-items:center;justify-content:center;font-size:13px}
+.dv{width:1px;height:20px;background:var(--stroke);margin:0 4px}
+.pill a{font-size:13px;color:var(--muted);text-decoration:none;padding:8px 14px;border-radius:99px;transition:.2s}
+.pill a:hover,.pill a.on{color:var(--text);background:rgba(32,32,32,.6)}
+.pill a.hi{color:var(--text);box-shadow:0 0 0 1px transparent}
+.pill a.hi:hover{background:var(--g);color:#0a0a0a}
+@media(max-width:560px){.dv{display:none}.pill a{padding:7px 9px;font-size:12px}}
+/* hero */
+#home{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:120px 0 80px}
+.bgv{position:absolute;inset:0;background:radial-gradient(60% 50% at 20% 30%,rgba(127,216,196,.22),transparent 70%),radial-gradient(55% 50% at 80% 60%,rgba(108,140,255,.25),transparent 70%),#0a0a0a;background-size:140% 140%;animation:gs 14s ease infinite}
+.bgv:after{content:"";position:absolute;left:0;right:0;bottom:0;height:200px;background:linear-gradient(to top,var(--bg),transparent)}
+@keyframes gs{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+.hc{position:relative;z-index:2;padding:0 20px}
+.name{font-size:clamp(48px,10vw,136px);line-height:.95;letter-spacing:-.04em;margin:28px 0 22px}
+.role{font-size:clamp(16px,2vw,20px);color:var(--muted);margin-bottom:18px}
+.role b{font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--text);display:inline-block;animation:rf .4s ease-out}
+@keyframes rf{from{opacity:0;transform:translateY(8px)}}
+.desc{color:var(--muted);max-width:460px;margin:0 auto 38px;font-size:15px;line-height:1.6}
+.btns{display:inline-flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.b{display:inline-block;border-radius:99px;padding:14px 28px;font-size:14px;text-decoration:none;transition:.25s;cursor:pointer;font-family:inherit}
+.b:hover{transform:scale(1.05)}
+.b1{background:var(--text);color:var(--bg);border:2px solid var(--text)}
+.b1:hover{background:var(--bg);color:var(--text);border-color:#6c8cff}
+.b2{border:2px solid var(--stroke);background:var(--bg);color:var(--text)}
+.b2:hover{border-color:#7fd8c4}
+.sc{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;text-align:center}
+.sc .l{width:1px;height:40px;background:var(--stroke);margin:10px auto 0;overflow:hidden}
+.sc .l i{display:block;width:100%;height:40%;background:var(--text);animation:sd 1.5s ease-in-out infinite}
+@keyframes sd{from{transform:translateY(-100%)}to{transform:translateY(200%)}}
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:22px}
+.card{background:var(--surface);border:1px solid var(--stroke);border-radius:28px;padding:clamp(24px,3.5vw,40px);position:relative;overflow:hidden;transition:.35s}
+.card:hover{border-color:transparent;box-shadow:0 0 0 1px #6c8cff,0 0 40px -12px #7fd8c4}
+.card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle,#000 1px,transparent 1px) 0 0/4px 4px;opacity:.18;pointer-events:none}
+.card>*{position:relative}
+.c7{grid-column:span 7}.c5{grid-column:span 5}.c6{grid-column:span 6}.c12{grid-column:span 12}.c4{grid-column:span 4}
+@media(max-width:820px){.c7,.c5,.c6,.c4{grid-column:span 12}}
+.tag{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--stroke);border-radius:99px;padding:5px 12px;margin:0 6px 6px 0}
+.card h3{font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:clamp(28px,3.4vw,40px);line-height:1.1;margin:14px 0}
+.card p{color:#b5b5b5;font-size:15px;line-height:1.7}
+.num{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(48px,7vw,84px);line-height:1}
+.grad{background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tm{border-left:1px solid var(--stroke);padding-left:28px;margin-left:6px;position:relative}
+.tm:before{content:"";position:absolute;left:-5px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--g)}
+/* agent */
+.chat{background:var(--surface);border:1px solid var(--stroke);border-radius:28px;overflow:hidden;max-width:820px}
+#log{height:340px;overflow-y:auto;padding:22px;display:flex;flex-direction:column;gap:12px}
+.m{max-width:85%;padding:12px 16px;border-radius:18px;font-size:14.5px;line-height:1.6;white-space:pre-wrap}
+.m.u{align-self:flex-end;background:var(--text);color:var(--bg)}
+.m.a{align-self:flex-start;background:#1c1c1c;border:1px solid var(--stroke)}
+.chips{padding:0 22px 14px;display:flex;flex-wrap:wrap;gap:8px}
+.chips button{font:inherit;font-size:12.5px;color:var(--muted);background:none;border:1px solid var(--stroke);border-radius:99px;padding:7px 14px;cursor:pointer;transition:.2s}
+.chips button:hover{color:var(--text);border-color:#6c8cff}
+.in{display:flex;gap:10px;padding:14px;border-top:1px solid var(--stroke)}
+.in input{flex:1;background:var(--bg);border:1px solid var(--stroke);border-radius:99px;color:var(--text);padding:12px 18px;font:inherit;font-size:14px;outline:none;min-width:0}
+.in input:focus{border-color:#6c8cff}
+.in button{border:0;border-radius:99px;background:var(--g);color:#0a0a0a;font:inherit;font-weight:500;padding:0 22px;cursor:pointer}
+.in button:disabled{opacity:.5}
+/* footer */
+footer{position:relative;overflow:hidden;padding:90px 0 36px;background:radial-gradient(70% 60% at 50% 0,rgba(108,140,255,.18),transparent 70%),var(--bg)}
+.mq{white-space:nowrap;display:flex;width:max-content;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(44px,9vw,110px);color:rgba(245,245,245,.14);margin-bottom:56px}
+.mq span{padding-right:.4em}
+.fb{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;border-top:1px solid var(--stroke);padding-top:26px;margin-top:56px;font-size:13px;color:var(--muted)}
+.fb a{color:var(--muted);text-decoration:none;margin-right:20px}.fb a:hover{color:var(--text)}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#34d399;margin-right:8px;animation:pl 1.8s infinite}
+@keyframes pl{50%{opacity:.35;transform:scale(1.4)}}
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1s,transform 1s cubic-bezier(.25,.1,.25,1)}
+.rv.in2{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div id="load"><div class="eye tl">Portfolio</div><div class="w d" id="lw">Learn</div><div class="n" id="ln">000</div><div id="bar"><i id="bi"></i></div></div>
+
+<nav><div class="pill" id="pill">
+<div class="logo"><span class="d">CG</span></div><div class="dv"></div>
+<a href="#home" class="on">Home</a><a href="#work">Work</a><a href="#experience">Experience</a><a href="#ask">Ask AI</a><div class="dv"></div><a href="#contact" class="hi">Say hi ↗</a>
+</div></nav>
+
+<section id="home">
+<div class="bgv"></div>
+<div class="hc">
+<div class="eye bi">AIML Engineer · Class of 2027</div>
+<h1 class="name d nr">Chitra Ganesh</h1>
+<div class="role bi">A <b id="rl">Learner</b> building intelligent systems in Bengaluru.</div>
+<p class="desc bi">Turning data into models that see, forecast and predict, from gait recognition to time-series forecasting.</p>
+<div class="btns bi"><a class="b b1" href="#work">See Works</a><a class="b b2" href="#contact">Reach out…</a></div>
+</div>
+<div class="sc"><div class="eye" style="letter-spacing:.2em">Scroll</div><div class="l"><i></i></div></div>
+</section>
+
+<section id="work"><div class="wrap">
+<div class="hd rv"><div class="eye">Selected Work</div><h2>Featured <i>projects</i></h2><p class="sub">Deep learning projects spanning computer vision and time-series forecasting.</p></div>
+<div class="grid">
+<div class="card c7 rv"><span class="tag">Computer Vision</span><span class="tag">Deep Learning</span><h3>Human Gait Recognition for Person Identification</h3>
+<p>A deep learning system that identifies individuals by their unique walking patterns in video sequences. It combines person detection, silhouette extraction, gait feature analysis and deep feature extraction to build unique gait representations, then compares them to re-identify people across different videos, with no reliance on facial features.</p></div>
+<div class="card c5 rv"><span class="tag">Time Series</span><span class="tag">LSTM</span><h3>Temperature Forecasting Using LSTM</h3>
+<p>A time-series forecasting system that predicts future temperature from historical weather observations. Uses data normalization, time-window generation and an LSTM network to learn temporal patterns and forecast upcoming periods.</p></div>
+</div></div></section>
+
+<section id="experience"><div class="wrap">
+<div class="hd rv"><div class="eye">Experience</div><h2>Where I've <i>worked</i></h2></div>
+<div class="grid">
+<div class="card c7 rv"><div class="tm"><span class="eye" style="letter-spacing:.15em">Jan 2026 – Apr 2026 · Bengaluru (Hybrid)</span><h3>AIML Engineer, Apex Data Solutions</h3>
+<p>Built and evaluated supervised learning models to predict customer churn, improving the baseline F1-score by 12%. Cleaned and preprocessed large tabular datasets with Python, Pandas and SQL, and deployed a lightweight REST API with FastAPI for internal testing.</p></div></div>
+<div class="card c5 rv"><span class="eye" style="letter-spacing:.15em">Education</span><h3>JAIN (Deemed-to-be-University)</h3><p>Faculty of Engineering and Technology<br>Class of 2027 · CGPA 7.8</p></div>
+</div></div></section>
+
+<section><div class="wrap"><div class="grid">
+<div class="card c4 rv"><div class="num grad">12%</div><p>F1-score improvement on churn prediction</p></div>
+<div class="card c4 rv"><div class="num grad">7.8</div><p>CGPA at JAIN University</p></div>
+<div class="card c4 rv"><div class="num grad">2</div><p>Deep learning projects: vision and forecasting</p></div>
+<div class="card c12 rv"><span class="eye" style="letter-spacing:.15em">Toolbox</span><div style="margin-top:16px"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">SQL</span><span class="tag">FastAPI</span><span class="tag">Supervised Learning</span><span class="tag">Deep Learning</span><span class="tag">Computer Vision</span><span class="tag">LSTM</span><span class="tag">Time-Series Forecasting</span></div></div>
+</div></div></section>
+
+<section id="ask"><div class="wrap">
+<div class="hd rv"><div class="eye">Portfolio Agent</div><h2>Ask <i>my AI</i></h2><p class="sub">An assistant that answers questions about my background, projects and experience.</p></div>
+<div class="chat rv"><div id="log"><div class="m a">Hi! I'm Chitra's portfolio assistant. Ask me about her projects, experience or education.</div></div>
+<div class="chips" id="chips"></div>
+<div class="in"><input id="q" placeholder="Ask about Chitra…" autocomplete="off"><button id="go">Send</button></div></div>
+</div></section>
+
+<footer id="contact"><div class="mq" id="mq"></div>
+<div class="wrap" style="text-align:center">
+<div class="eye">Contact</div><h2>Let's build <i>something</i></h2>
+<p class="sub" style="margin:0 auto 30px">Open to AIML roles and collaborations.</p>
+<div class="btns"><a class="b b1" href="https://www.linkedin.com/in/chitra-ganesh-012886282/" target="_blank" rel="noopener">Connect on LinkedIn ↗</a><a class="b b2" href="https://github.com/chitraganesh" target="_blank" rel="noopener">GitHub ↗</a></div>
+<div class="fb"><div><a href="https://www.linkedin.com/in/chitra-ganesh-012886282/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/chitraganesh" target="_blank" rel="noopener">GitHub</a></div><div><span class="dot"></span>Available for projects</div></div>
+</div></footer>
+
+<script>
+const $=s=>document.querySelector(s);
+// loader
+const words=["Learn","Build","Inspire"];let wi=0;
+const wt=setInterval(()=>{wi=(wi+1)%3;$("#lw").textContent=words[wi]},900);
+const t0=performance.now();
+(function tick(t){const p=Math.min((t-t0)/2700,1),c=Math.round(p*100);
+$("#ln").textContent=String(c).padStart(3,"0");$("#bi").style.transform="scaleX("+p+")";
+if(p<1)requestAnimationFrame(tick);else setTimeout(done,400)})(t0);
+function done(){clearInterval(wt);gsap.to("#load",{opacity:0,duration:.6,onComplete:()=>$("#load").remove()});
+const tl=gsap.timeline({defaults:{ease:"power3.out"}});
+tl.from(".nr",{opacity:0,y:50,duration:1.2,delay:.1}).from(".bi",{opacity:0,y:20,filter:"blur(10px)",duration:1,stagger:.1},.3)}
+// roles
+const roles=["Learner","Modeler","Problem-solver","Engineer"];let ri=0;
+setInterval(()=>{ri=(ri+1)%roles.length;const e=$("#rl");e.textContent=roles[ri];e.style.animation="none";e.offsetWidth;e.style.animation=""},2000);
+// nav
+addEventListener("scroll",()=>$("#pill").classList.toggle("s",scrollY>100));
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener("click",e=>{e.preventDefault();const t=document.querySelector(a.getAttribute("href"));t&&t.scrollIntoView({behavior:"smooth"})}));
+const links=[...document.querySelectorAll(".pill a[href^='#']:not(.hi)")];
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(l=>l.classList.toggle("on",l.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
+["home","work","experience","ask"].forEach(i=>so.observe($("#"+i)));
+// reveal
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in2");ro.unobserve(e.target)}}),{rootMargin:"0px 0px -80px 0px"});
+document.querySelectorAll(".rv").forEach(e=>ro.observe(e));
+// marquee
+$("#mq").innerHTML=('<span>BUILDING INTELLIGENT SYSTEMS •</span>').repeat(10);
+gsap.to("#mq",{xPercent:-50,duration:40,ease:"none",repeat:-1});
+// agent
+const CTX=`You are the portfolio assistant for Chitra Ganesh. Answer ONLY from these facts, in first person about her as "Chitra" (third person), friendly and concise (max ~90 words). If something isn't covered, say you don't have that info and suggest connecting via LinkedIn. Never invent details.
+FACTS:
+- Role: AIML Engineer. Studied at JAIN (Deemed-to-be-University), Faculty of Engineering and Technology; CGPA 7.8; class of 2027.
+- Experience: Apex Data Solutions, Jan 2026–Apr 2026, Bengaluru (Hybrid). Built and evaluated supervised learning models to predict customer churn, improving baseline F1-score by 12%. Cleaned and preprocessed large tabular datasets with Python, Pandas, SQL; deployed a lightweight REST API with FastAPI for internal testing.
+- Project 1: Human Gait Recognition for Person Identification. Deep learning system identifying individuals by walking patterns from video. Uses person detection, silhouette extraction, gait feature analysis, deep feature extraction to create gait representations, compared to re-identify people across videos, without facial features.
+- Project 2: Temperature Forecasting Using LSTM. Time-series forecasting of future temperature from historical weather data using normalization, time-window generation and an LSTM network.
+- Skills: Python, Pandas, SQL, FastAPI, supervised learning, deep learning, computer vision, LSTM, time-series forecasting.
+- LinkedIn: https://www.linkedin.com/in/chitra-ganesh-012886282/ ; GitHub: https://github.com/chitraganesh`;
+const sugg=["What projects has Chitra built?","Tell me about her internship","What are her skills?","Where did she study?"];
+sugg.forEach(s=>{const b=document.createElement("button");b.textContent=s;b.onclick=()=>ask(s);$("#chips").appendChild(b)});
+const hist=[];let busy=false,sample;
+function add(c,t){const d=document.createElement("div");d.className="m "+c;d.textContent=t;$("#log").appendChild(d);$("#log").scrollTop=1e9;return d}
+async function ask(text){
+ text=(text||$("#q").value).trim();if(!text||busy)return;$("#q").value="";
+ add("u",text);const el=add("a","Thinking…");busy=true;$("#go").disabled=true;
+ try{
+  sample=sample||await claude.use("sample");
+  if(!sample){el.textContent="The assistant isn't available in this view. Please reach out on LinkedIn instead.";return}
+  hist.push({role:"user",content:text});
+  const input=[{role:"user",content:CTX+"\n\nConversation so far follows. Answer the last question."},{role:"assistant",content:"Understood."},...hist.slice(-8)];
+  const r=await sample(input,{cache:false,modelTier:"quick",onText:({text})=>{el.textContent=text;$("#log").scrollTop=1e9}});
+  el.textContent=r.text;hist.push({role:"assistant",content:r.text});
+ }catch(e){el.textContent=e&&e.code==="rate_limited"?"Too many questions at once, please try again shortly.":"Sorry, I couldn't answer that right now.";hist.pop()}
+ finally{busy=false;$("#go").disabled=false}
+}
+$("#go").onclick=()=>ask();$("#q").addEventListener("keydown",e=>{if(e.key==="Enter")ask()});
+</script>
+</body>
+</html>
